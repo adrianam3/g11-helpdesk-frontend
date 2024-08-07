@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from "./layout/app.layout.component";
-import { LoginComponent } from './modulos/usuario/login/login.component';
+import { LoginComponent } from './modules/usuario/login/login.component';
 
 @NgModule({
     imports: [
@@ -17,7 +17,13 @@ import { LoginComponent } from './modulos/usuario/login/login.component';
                     { path: 'blocks', loadChildren: () => import('./demo/components/primeblocks/primeblocks.module').then(m => m.PrimeBlocksModule) },
                     { path: 'pages', loadChildren: () => import('./demo/components/pages/pages.module').then(m => m.PagesModule) },
                     {
-                        path: 'usuario', loadChildren: () => import('./modulos/usuario/usuario.module').then(m => m.UsuarioModule)
+                        path: 'usuario', loadChildren: () => import('./modules/usuario/usuario.module').then(m => m.UsuarioModule)
+                    },
+                    {
+                        path: 'persona', loadChildren: () => import('./modules/persona/persona.module').then(m => m.PersonaModule)
+                    },
+                    {
+                        path: 'rol', loadChildren: () => import('./modules/rol/rol.module').then(m => m.RolModule)
                     },
                 ]
             },
