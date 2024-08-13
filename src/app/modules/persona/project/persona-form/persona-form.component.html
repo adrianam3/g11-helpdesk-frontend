@@ -1,1 +1,122 @@
-<p>persona-form works!</p>
+<div class="card card-w-title">
+    <p-button icon="pi pi-angle-double-left" label="Volver" (onClick)="confirmVolver()" />
+    <p-button *ngIf="persona.estado !== 'AC' && isEdicion" [disabled]="bloquearEdicion" label="Reactivar Persona"
+        (onClick)="confirmReactivar()" icon="pi pi-check" severity="success" style="float: right;" />
+</div>
+
+<div class="card card-w-title" style="padding: 20px;">
+    <h5>PERSONA</h5>
+    <form [formGroup]="personaForm" (ngSubmit)="onSubmit()">
+        <div class="col-12 md:col-12">
+            <div class="p-fluid">
+                <div class="field grid">
+                    <label htmlFor="cedula" class="col-12 mb-2 md:col-2 md:mb-0">C&eacute;dula: <b>*</b> </label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="cedula" type="text" formControlName="cedula" />
+                    </div>
+                    <div class="error"
+                        *ngIf="personaForm.get('cedula').invalid && (personaForm.get('cedula').dirty || personaForm.get('cedula').touched)">
+                        <small *ngIf="personaForm.get('cedula').errors?.required">La c&eacute;dula es requerida.</small>
+                        <small *ngIf="personaForm.get('cedula').errors?.pattern">La c&eacute;dula debe
+                            contener solo números.</small>
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label htmlFor="nombre" class="col-12 mb-2 md:col-2 md:mb-0">Nombres: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="nombre" type="text" formControlName="nombre" />
+                    </div>
+                    <label htmlFor="apellido" class="col-12 mb-2 md:col-2 md:mb-0">Apellidos: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="apellido" type="text" formControlName="apellido" />
+                    </div>
+                </div>
+                <div class="error field grid">
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('nombre').invalid && (personaForm.get('nombre').dirty || personaForm.get('nombre').touched)">
+                        <small *ngIf="personaForm.get('nombre').errors?.required">El nombre es
+                            requerido.</small>
+                    </div>
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('apellido').invalid && (personaForm.get('apellido').dirty || personaForm.get('apellido').touched)">
+                        <small *ngIf="personaForm.get('apellido').errors?.required">El apellido es
+                            requerido.</small>
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label htmlFor="direccion" class="col-12 mb-2 md:col-2 md:mb-0">Direcci&oacute;n: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="direccion" type="text" formControlName="direccion" />
+                    </div>
+                    <label htmlFor="email" class="col-12 mb-2 md:col-2 md:mb-0">E-mail: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="email" type="text" formControlName="email" />
+                    </div>
+                </div>
+                <div class="error field grid">
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('direccion').invalid && (personaForm.get('direccion').dirty || personaForm.get('direccion').touched)">
+                        <small *ngIf="personaForm.get('direccion').errors?.required">La
+                            direcci&oacute;n es requerida.</small>
+                    </div>
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('email').invalid && (personaForm.get('email').dirty || personaForm.get('email').touched)">
+                        <small *ngIf="personaForm.get('email').errors?.required">El email es requerido.</small>
+                        <small *ngIf="personaForm.get('email').errors?.email">Ingrese un email válido.</small>
+                    </div>
+                </div>
+
+                <div class="field grid">
+                    <label htmlFor="telefono" class="col-12 mb-2 md:col-2 md:mb-0">Tel&eacute;fono: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="telefono" type="text" formControlName="telefono" />
+                    </div>
+                    <label htmlFor="extension" class="col-12 mb-2 md:col-2 md:mb-0">Extensi&oacute;n:</label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="extension" type="text" />
+                    </div>
+                </div>
+                <div class="error field grid">
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('telefono').invalid && (personaForm.get('telefono').dirty || personaForm.get('telefono').touched)">
+                        <small *ngIf="personaForm.get('telefono').errors?.required">El tel&eacute;fono es
+                            requerido.</small>
+                        <small *ngIf="personaForm.get('telefono').errors?.pattern">El tel&eacute;fono debe
+                            contener solo números.</small>
+                    </div>
+                </div>
+                <div class="field grid">
+                    <label htmlFor="celular" class="col-12 mb-2 md:col-2 md:mb-0">Celular: <b> *</b></label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="celular" type="text" formControlName="celular" />
+                    </div>
+                </div>
+                <div class="error field grid">
+                    <div class="col-12 md:col-6"
+                        *ngIf="personaForm.get('celular').invalid && (personaForm.get('celular').dirty || personaForm.get('celular').touched)">
+                        <small *ngIf="personaForm.get('celular').errors?.required">El celular es
+                            requerido.</small>
+                        <small *ngIf="personaForm.get('celular').errors?.pattern">El celular debe
+                            contener solo números.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p-toolbar>
+        <div class="p-toolbar-group-start"></div>
+        <div class="p-toolbar-group-end">
+            <p-button *ngIf="!persona.idPersona" [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-check"
+                (click)="confirmCreatePersona()" label="Guardar" severity="success" />
+            <p-button *ngIf="persona.idPersona" [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-check"
+                (click)="confirmUpdatePersona()" label="Actualizar" />
+            <p-button [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-times" (click)="confirmVolver()"
+                label="Cancelar" severity="danger" />
+        </div>
+    </p-toolbar>
+</div>
+<p-confirmDialog header key="persona" acceptLabel="Si" rejectLabel="No" icon="pi pi-exclamation-triangle"
+    [closable]="false" [closeOnEscape]="false" [style]="{width: '450px'}" acceptButtonStyleClass="p-button-text"
+    rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast position="top-right" key="persona" [style]="{width: '525px'}"></p-toast>

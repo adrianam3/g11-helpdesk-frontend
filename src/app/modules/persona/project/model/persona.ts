@@ -3,6 +3,11 @@ export class Persona {
     cedula: any;
     nombres: any;
     apellidos: any;
-    fechaCreacion: any;
+    nombreCompleto: any;
+    email: any;
+    celular: any;
+    telefono: any;
+    extension: any;
     estado: any;
+    descEstado: any;
 }

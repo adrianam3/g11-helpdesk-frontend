@@ -14,12 +14,15 @@ export class AppMenuComponent implements OnInit {
 
     ngOnInit() {
         this.model = [
-            {                
-                    label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']
+            {
+                label: 'Inicio', icon: 'pi pi-fw pi-home', routerLink: ['/']
             },
             {
                 label: 'GESTIÓN DE USUARIOS',
                 items: [
+                    { label: 'Rol', icon: 'pi pi-fw pi-id-card' },
+                    { label: 'Usuario', icon: 'pi pi-user' },
+                    { label: 'Persona', icon: 'pi pi-fw pi-id-card', routerLink: ['/persona/persona-list'] },
                     { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
                     { label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
                     { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] },
@@ -143,17 +146,6 @@ export class AppMenuComponent implements OnInit {
                                 ]
                             },
                         ]
-                    }
-                ]
-            },
-            {
-                label: 'Get Started',
-                items: [
-                    {
-                        label: 'Documentation', icon: 'pi pi-fw pi-question', routerLink: ['/documentation']
-                    },
-                    {
-                        label: 'View Source', icon: 'pi pi-fw pi-search', url: ['https://github.com/primefaces/sakai-ng'], target: '_blank'
                     }
                 ]
             }

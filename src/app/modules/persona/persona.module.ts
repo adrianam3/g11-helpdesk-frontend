@@ -6,7 +6,7 @@ import { PersonaFormComponent } from './project/persona-form/persona-form.compon
 import { PersonaListComponent } from './project/persona-list/persona-list.component';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
@@ -30,6 +30,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { TreeTableModule } from 'primeng/treetable';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { UtilitiesModule } from 'src/app/demo/components/utilities/utilities.module';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { UtilitiesModule } from 'src/app/demo/components/utilities/utilities.mod
     CommonModule,
     PersonaRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     TableModule,
     InputTextModule,
     ButtonModule,
@@ -62,7 +64,11 @@ import { UtilitiesModule } from 'src/app/demo/components/utilities/utilities.mod
     SplitButtonModule,
     TreeTableModule,
     InputSwitchModule,
-    UtilitiesModule
-  ]
+    UtilitiesModule,
+  ],
+  providers: [
+    ConfirmationService,
+    MessageService,
+  ],
 })
 export class PersonaModule { }
