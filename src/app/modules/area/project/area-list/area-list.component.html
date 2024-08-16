@@ -1,17 +1,17 @@
 <div class="card card-w-title" style="display: flex; justify-content: space-between; align-items: center;">
     <div style="display: flex; align-items: center;">
-        <i class="pi pi-fw pi-id-card"></i>
-        <span style="font-size: 15px; margin-left: 5px;"><b>ROLES</b></span>
+        <i class="pi pi-fw pi-table"></i>
+        <span style="font-size: 15px; margin-left: 5px;"><b>&Aacute;reas</b></span>
     </div>
     <div>
-        <p-button [raised]="true" severity="success" routerLink="/rol/rol-form/" label="Nuevo Rol" icon="pi pi-plus" />
+        <p-button [raised]="true" severity="success" routerLink="/area/area-form/" label="Nueva &Aacute;rea"
+            icon="pi pi-plus" />
     </div>
 </div>
-
 <div class="card card-w-title">
-    <p-table #dt [value]="rolesEjemplo" [rows]="10" [paginator]="true"
-        [globalFilterFields]="['nombreRol', 'descEstado']" [tableStyle]="{ 'min-width': '45rem' }" [rowHover]="true"
-        dataKey="idRol" currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} registros."
+    <p-table #dt [value]="areasEjemplo" [rows]="10" [paginator]="true"
+        [globalFilterFields]="['nombreArea', 'descEstado']" [tableStyle]="{ 'min-width': '45rem' }" [rowHover]="true"
+        dataKey="idArea" currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} registros."
         [showCurrentPageReport]="true">
         <ng-template pTemplate="caption">
             <div class="flex justify-content-between flex-column sm:flex-row">
@@ -26,8 +26,8 @@
         </ng-template>
         <ng-template pTemplate="header">
             <tr>
-                <th pSortableColumn="nombreRol">
-                    Rol <p-sortIcon field="nombreRol" />
+                <th pSortableColumn="nombreArea">
+                    &Aacute;rea <p-sortIcon field="nombreArea" />
                 </th>
                 <th pSortableColumn="descEstado">
                     Estado <p-sortIcon field="descEstado" />
@@ -36,7 +36,7 @@
             </tr>
             <tr *ngIf="showSearch">
                 <th>
-                    <p-columnFilter type="text" field="nombreRol" [showClearButton]="false" />
+                    <p-columnFilter type="text" field="nombreArea" [showClearButton]="false" />
                 </th>
                 <th>
                     <p-columnFilter type="text" field="descEstado" [showClearButton]="false" />
@@ -46,11 +46,11 @@
         </ng-template>
         <ng-template pTemplate="body" let-rowData>
             <tr>
-                <td style="text-align: center;">{{rowData.nombreRol}}</td>
+                <td style="text-align: center;">{{rowData.nombreArea}}</td>
                 <td style="text-align: center;">{{rowData.descEstado}}</td>
                 <td>
                     <p-button icon="pi pi-pencil" class="mr-2" [rounded]="true" [outlined]="true" severity="success"
-                        routerLink="/rol/rol-form/{{rowData.idRol}}" />
+                        routerLink="/area/area-form/{{rowData.idArea}}" />
                     <p-button icon="pi pi-ban" severity="danger" [rounded]="true" [outlined]="true" />
                 </td>
             </tr>

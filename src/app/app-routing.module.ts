@@ -25,6 +25,18 @@ import { LoginComponent } from './modules/usuario/login/login.component';
                     {
                         path: 'rol', loadChildren: () => import('./modules/rol/rol.module').then(m => m.RolModule)
                     },
+                    {
+                        path: 'departamento', loadChildren: () => import('./modules/departamento/departamento.module').then(m => m.DepartamentoModule)
+                    },
+                    {
+                        path: 'area', loadChildren: () => import('./modules/area/area.module').then(m => m.AreaModule)
+                    },
+                    {
+                        path: 'agente', loadChildren: () => import('./modules/agente/agente.module').then(m => m.AgenteModule)
+                    },
+                    {
+                        path: 'ticket', loadChildren: () => import('./modules/ticket/ticket.module').then(m => m.TicketModule)
+                    },
                 ]
             },
             { path: 'auth', loadChildren: () => import('./demo/components/auth/auth.module').then(m => m.AuthModule) },

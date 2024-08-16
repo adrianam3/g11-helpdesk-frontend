@@ -1,1 +1,43 @@
-<p>rol-form works!</p>
+<div class="card card-w-title">
+    <p-button icon="pi pi-angle-double-left" label="Volver" (onClick)="confirmVolver()" />
+    <p-button *ngIf="rol.estado !== 'AC' && isEdicion" [disabled]="bloquearEdicion" label="Reactivar Rol"
+        (onClick)="confirmReactivar()" icon="pi pi-check" severity="success" style="float: right;" />
+</div>
+
+<div class="card card-w-title" style="padding: 20px;">
+    <h5>ROL</h5>
+    <form [formGroup]="rolForm" (ngSubmit)="onSubmit()">
+        <div class="col-12 md:col-12">
+            <div class="p-fluid">
+                <div class="field grid">
+                    <label htmlFor="nombreRol" class="col-12 mb-2 md:col-2 md:mb-0">Nombre Rol: <b>*</b> </label>
+                    <div class="col-12 md:col-4">
+                        <input pInputText id="nombreRol" type="text" formControlName="nombreRol" />
+                    </div>
+                    <div class="error"
+                        *ngIf="rolForm.get('nombreRol').invalid && (rolForm.get('nombreRol').dirty || rolForm.get('nombreRol').touched)">
+                        <small *ngIf="rolForm.get('nombreRol').errors?.required">El nombre es
+                            requerido.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <p-toolbar>
+        <div class="p-toolbar-group-start"></div>
+        <div class="p-toolbar-group-end">
+            <p-button *ngIf="!rol.idRol" [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-check"
+                (click)="confirmCreateRol()" label="Guardar" severity="success" />
+            <p-button *ngIf="rol.idRol" [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-check"
+                (click)="confirmUpdateRol()" label="Actualizar" />
+            <p-button [disabled]="bloquearEdicion" class="mr-2" icon="pi pi-times" (click)="confirmVolver()"
+                label="Cancelar" severity="danger" />
+        </div>
+    </p-toolbar>
+</div>
+
+<p-confirmDialog header key="rol" acceptLabel="Si" rejectLabel="No" icon="pi pi-exclamation-triangle" [closable]="false"
+    [closeOnEscape]="false" [style]="{width: '350px'}" acceptButtonStyleClass="p-button-text"
+    rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast position="top-right" key="rol" [style]="{width: '525px'}"></p-toast>
