@@ -9,7 +9,7 @@
 </div>
 
 <div class="card card-w-title">
-    <p-table #dt [value]="rolesEjemplo" [rows]="10" [paginator]="true"
+    <p-table #dt [value]="roles" [rows]="10" [paginator]="true"
         [globalFilterFields]="['nombreRol', 'descEstado']" [tableStyle]="{ 'min-width': '45rem' }" [rowHover]="true"
         dataKey="idRol" currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords} registros."
         [showCurrentPageReport]="true">
